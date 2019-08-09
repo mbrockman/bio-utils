@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# print help
+
+if(!$ARGV[0] or $ARGV[0] eq "-h") {
+    print <<HELP;
+
+length: return the character length of the input string
+
+options: length <string>
+
+   <string>  string specified on the commandline (use quotes if there are spaces or shell characters such as the ampersand)
+
+HELP
+    exit;
+}
+
+
+# get string
+my $string = $ARGV[0];
+
+print "Length: ",length($string),"\n";
+
+exit(0);
