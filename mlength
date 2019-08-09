@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# print help
+
+if(!$ARGV[0] or $ARGV[0] eq "-h") {
+    print <<HELP;
+
+mlength: return the character length of multiple input strings
+
+options: mlength <filename|->
+
+ <filename|->  '-' if reading from stdin; 'filename' if reading from a file
+
+HELP
+    exit;
+}
+
+# get filename
+my $filename = $ARGV[0];
+
+## load data from file ##
+my @rows;
+if($filename ne '-') {
+    open(FILE,$filename);
+    while(<FILE>) {
+        chomp;
+        push @rows, $_;
+    } # end while
+    close(FILE);
+} else {
+    ## load data from STDIN ##
+    while(<STDIN>) {
+        chomp;
+        push @rows, $_;
+    } # end while
+} # end if
+
+# output character length counts
+for(my $i=0;$i<@rows;$i++) {
+    print length($rows[$i]),"\n";
+} # end for
+
+exit(0);
