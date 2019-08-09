@@ -1,2 +1,2 @@
 # bio-utils
-general bioinformatics utility scripts
+Repository for general bioinformatics utility scripts
