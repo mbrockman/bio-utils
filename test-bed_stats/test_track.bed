@@ -1,0 +1,4 @@
+track name=myregions description="my regions"
+chr1	10	20
+chr1	200	100
+chr2	1000	3000
