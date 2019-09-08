@@ -1,6 +1,5 @@
 import argparse
 import os.path
-import re
 
 
 def fixed_width_cols(rows, pad_len=2, delimiter="\t"):
@@ -57,17 +56,15 @@ with open(args.bed, "r") as input_bed:
     total_sum = 0  # total nt sum across all regions (does not resolve any overlap)
     info_by_seq_name = {}  # dictionary of info by seqname
     seq_names_by_input_order = []  # list of seqnames kept in input order
-    re_hash = re.compile(r'^#')
-    re_track = re.compile(r'^track')
     for line in input_bed:
         line = line.strip()
 
         # TO DO skip if line is blank or starts with '#' or start with 'track'
         if len(line) == 0:  # skip blank lines
             continue
-        if re.search(re_hash, line):
+        if line.startswith('#'):
             continue
-        if re.search(re_track, line):
+        if line.startswith('track'):
             continue
 
         # split into component values
