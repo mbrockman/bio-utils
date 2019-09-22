@@ -82,10 +82,8 @@ with open(args.bed, "r") as input_bed:
 
         # swap if start and stop if backward
         if start > end:
-            tmp = end
-            end = start
-            start = tmp
-        
+            start, end = end, start
+
         # count total num of regions
         regions_count += 1
 
